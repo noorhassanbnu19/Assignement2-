@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+
+// simple array name
+char seat[3][4] = {
+    {'F','F','F','F'},
+    {'F','F','F','F'},
+    {'F','F','F','F'}
+};
+
+// simple function to show seats
+void show(){
+    for(int i=0;i<3;i++){
+        for(int j=0;j<4;j++){
+            cout<<"("<<i+1<<"-"<<j+1<<" "<<seat[i][j]<<") ";
+        }
+        cout<<endl;
+    }
+}
+
+// booking function (beginner style)
+void book(){
+    int r,c;
+    while(true){
+        cout<<"Enter row and col (1-3 & 1-4) to book or 0 0 to exit : ";
+        cin>>r>>c;
+
+        if(r==0 && c==0){
+            break;
+        }
+
+        if(r>=1 && r<=3 && c>=1 && c<=4){
+            if(seat[r-1][c-1]=='F'){
+                seat[r-1][c-1]='R';
+                cout<<"Seat booked "<<r<<"-"<<c<<endl;
+            }
+            else{
+                cout<<"Already Reserved"<<endl;
+            }
+        }
+        else{
+            cout<<"Invalid"<<endl;
+        }
+    }
+}
+
+int main(){
+    show();
+    book();
+    show();
+    return 0;
+}
